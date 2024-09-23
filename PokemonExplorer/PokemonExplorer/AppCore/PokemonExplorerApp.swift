@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct PokemonExplorerApp: App {
+    let appAssembler = AppAssembler()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

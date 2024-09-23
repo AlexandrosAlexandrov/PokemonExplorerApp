@@ -11,7 +11,48 @@
 		804C99932CA1E9B4002B83EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804C99922CA1E9B4002B83EB /* ContentView.swift */; };
 		804C99952CA1E9B5002B83EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 804C99942CA1E9B5002B83EB /* Assets.xcassets */; };
 		804C99992CA1E9B5002B83EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 804C99982CA1E9B5002B83EB /* Preview Assets.xcassets */; };
+		80AF18A12CA1ECB200CFBC18 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 80AF18A02CA1ECB200CFBC18 /* Swinject */; };
+		80AF18BA2CA1EE9200CFBC18 /* InjectProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AF18B92CA1EE9200CFBC18 /* InjectProperty.swift */; };
+		80AF18BC2CA1EEA200CFBC18 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AF18BB2CA1EEA200CFBC18 /* Resolver.swift */; };
+		80AF18BE2CA1EED300CFBC18 /* AppAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AF18BD2CA1EED300CFBC18 /* AppAssembler.swift */; };
+		80AF18C02CA1EEF300CFBC18 /* DataLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80AF187F2CA1EB9F00CFBC18 /* DataLayer.framework */; };
+		80AF18C12CA1EEF300CFBC18 /* DataLayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80AF187F2CA1EB9F00CFBC18 /* DataLayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		80AF18C32CA1EEF500CFBC18 /* DomainLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80AF189B2CA1EBC100CFBC18 /* DomainLayer.framework */; };
+		80AF18C42CA1EEF500CFBC18 /* DomainLayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80AF189B2CA1EBC100CFBC18 /* DomainLayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		80AF18E42CA1F2A600CFBC18 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AF18E32CA1F2A600CFBC18 /* View+.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		80AF187E2CA1EB9F00CFBC18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80AF187A2CA1EB9F00CFBC18 /* DataLayer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 80AF186E2CA1EB9F00CFBC18;
+			remoteInfo = DataLayer;
+		};
+		80AF189A2CA1EBC100CFBC18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80AF18962CA1EBC000CFBC18 /* DomainLayer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 80AF188A2CA1EBC000CFBC18;
+			remoteInfo = DomainLayer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		80AF18C22CA1EEF300CFBC18 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				80AF18C42CA1EEF500CFBC18 /* DomainLayer.framework in Embed Frameworks */,
+				80AF18C12CA1EEF300CFBC18 /* DataLayer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		804C998D2CA1E9B4002B83EB /* PokemonExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,6 +61,12 @@
 		804C99942CA1E9B5002B83EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		804C99962CA1E9B5002B83EB /* PokemonExplorer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PokemonExplorer.entitlements; sourceTree = "<group>"; };
 		804C99982CA1E9B5002B83EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		80AF187A2CA1EB9F00CFBC18 /* DataLayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DataLayer.xcodeproj; path = DataLayer/DataLayer.xcodeproj; sourceTree = "<group>"; };
+		80AF18962CA1EBC000CFBC18 /* DomainLayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DomainLayer.xcodeproj; path = DomainLayer/DomainLayer.xcodeproj; sourceTree = "<group>"; };
+		80AF18B92CA1EE9200CFBC18 /* InjectProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectProperty.swift; sourceTree = "<group>"; };
+		80AF18BB2CA1EEA200CFBC18 /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
+		80AF18BD2CA1EED300CFBC18 /* AppAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembler.swift; sourceTree = "<group>"; };
+		80AF18E32CA1F2A600CFBC18 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +74,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80AF18C32CA1EEF500CFBC18 /* DomainLayer.framework in Frameworks */,
+				80AF18C02CA1EEF300CFBC18 /* DataLayer.framework in Frameworks */,
+				80AF18A12CA1ECB200CFBC18 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,8 +86,11 @@
 		804C99842CA1E9B4002B83EB = {
 			isa = PBXGroup;
 			children = (
+				80AF18962CA1EBC000CFBC18 /* DomainLayer.xcodeproj */,
+				80AF187A2CA1EB9F00CFBC18 /* DataLayer.xcodeproj */,
 				804C998F2CA1E9B4002B83EB /* PokemonExplorer */,
 				804C998E2CA1E9B4002B83EB /* Products */,
+				80AF18BF2CA1EEF300CFBC18 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,8 +105,9 @@
 		804C998F2CA1E9B4002B83EB /* PokemonExplorer */ = {
 			isa = PBXGroup;
 			children = (
-				804C99902CA1E9B4002B83EB /* PokemonExplorerApp.swift */,
-				804C99922CA1E9B4002B83EB /* ContentView.swift */,
+				80AF18B82CA1EE7600CFBC18 /* Swinject */,
+				80AF18B72CA1EE7100CFBC18 /* AppCore */,
+				80AF18B62CA1EE6700CFBC18 /* PresentationLayer */,
 				804C99942CA1E9B5002B83EB /* Assets.xcassets */,
 				804C99962CA1E9B5002B83EB /* PokemonExplorer.entitlements */,
 				804C99972CA1E9B5002B83EB /* Preview Content */,
@@ -69,6 +123,88 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		80AF187B2CA1EB9F00CFBC18 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80AF187F2CA1EB9F00CFBC18 /* DataLayer.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80AF18972CA1EBC000CFBC18 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80AF189B2CA1EBC100CFBC18 /* DomainLayer.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80AF18B62CA1EE6700CFBC18 /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				80AF18E72CA1F30500CFBC18 /* Constants */,
+				80AF18E62CA1F2E800CFBC18 /* Reusables */,
+				80AF18E52CA1F2CD00CFBC18 /* Features */,
+				80AF18E22CA1F29E00CFBC18 /* Extensions */,
+			);
+			path = PresentationLayer;
+			sourceTree = "<group>";
+		};
+		80AF18B72CA1EE7100CFBC18 /* AppCore */ = {
+			isa = PBXGroup;
+			children = (
+				804C99902CA1E9B4002B83EB /* PokemonExplorerApp.swift */,
+				80AF18BD2CA1EED300CFBC18 /* AppAssembler.swift */,
+			);
+			path = AppCore;
+			sourceTree = "<group>";
+		};
+		80AF18B82CA1EE7600CFBC18 /* Swinject */ = {
+			isa = PBXGroup;
+			children = (
+				80AF18B92CA1EE9200CFBC18 /* InjectProperty.swift */,
+				80AF18BB2CA1EEA200CFBC18 /* Resolver.swift */,
+			);
+			path = Swinject;
+			sourceTree = "<group>";
+		};
+		80AF18BF2CA1EEF300CFBC18 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		80AF18E22CA1F29E00CFBC18 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				80AF18E32CA1F2A600CFBC18 /* View+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		80AF18E52CA1F2CD00CFBC18 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				804C99922CA1E9B4002B83EB /* ContentView.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		80AF18E62CA1F2E800CFBC18 /* Reusables */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reusables;
+			sourceTree = "<group>";
+		};
+		80AF18E72CA1F30500CFBC18 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -79,12 +215,16 @@
 				804C99892CA1E9B4002B83EB /* Sources */,
 				804C998A2CA1E9B4002B83EB /* Frameworks */,
 				804C998B2CA1E9B4002B83EB /* Resources */,
+				80AF18C22CA1EEF300CFBC18 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = PokemonExplorer;
+			packageProductDependencies = (
+				80AF18A02CA1ECB200CFBC18 /* Swinject */,
+			);
 			productName = PokemonExplorer;
 			productReference = 804C998D2CA1E9B4002B83EB /* PokemonExplorer.app */;
 			productType = "com.apple.product-type.application";
@@ -113,14 +253,44 @@
 				Base,
 			);
 			mainGroup = 804C99842CA1E9B4002B83EB;
+			packageReferences = (
+				80AF189F2CA1ECB200CFBC18 /* XCRemoteSwiftPackageReference "Swinject" */,
+			);
 			productRefGroup = 804C998E2CA1E9B4002B83EB /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 80AF187B2CA1EB9F00CFBC18 /* Products */;
+					ProjectRef = 80AF187A2CA1EB9F00CFBC18 /* DataLayer.xcodeproj */;
+				},
+				{
+					ProductGroup = 80AF18972CA1EBC000CFBC18 /* Products */;
+					ProjectRef = 80AF18962CA1EBC000CFBC18 /* DomainLayer.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				804C998C2CA1E9B4002B83EB /* PokemonExplorer */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		80AF187F2CA1EB9F00CFBC18 /* DataLayer.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DataLayer.framework;
+			remoteRef = 80AF187E2CA1EB9F00CFBC18 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80AF189B2CA1EBC100CFBC18 /* DomainLayer.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DomainLayer.framework;
+			remoteRef = 80AF189A2CA1EBC100CFBC18 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		804C998B2CA1E9B4002B83EB /* Resources */ = {
@@ -140,7 +310,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				804C99932CA1E9B4002B83EB /* ContentView.swift in Sources */,
+				80AF18BA2CA1EE9200CFBC18 /* InjectProperty.swift in Sources */,
 				804C99912CA1E9B4002B83EB /* PokemonExplorerApp.swift in Sources */,
+				80AF18BE2CA1EED300CFBC18 /* AppAssembler.swift in Sources */,
+				80AF18E42CA1F2A600CFBC18 /* View+.swift in Sources */,
+				80AF18BC2CA1EEA200CFBC18 /* Resolver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +465,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.scanner.test.PokemonExplorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -328,7 +503,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.scanner.test.PokemonExplorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -357,6 +533,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		80AF189F2CA1ECB200CFBC18 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		80AF18A02CA1ECB200CFBC18 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 80AF189F2CA1ECB200CFBC18 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 804C99852CA1E9B4002B83EB /* Project object */;
 }
