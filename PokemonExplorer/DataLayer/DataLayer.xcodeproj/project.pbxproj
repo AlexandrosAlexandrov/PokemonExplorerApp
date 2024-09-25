@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80AA300A2CA4938E0098F68B /* PokemonRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AA30092CA4938E0098F68B /* PokemonRequestBuilder.swift */; };
+		80AA300D2CA493F70098F68B /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AA300C2CA493F70098F68B /* NetworkConstants.swift */; };
+		80AA30142CA496C60098F68B /* PokemonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AA30132CA496C60098F68B /* PokemonRepository.swift */; };
 		80AF18732CA1EB9F00CFBC18 /* DataLayer.docc in Sources */ = {isa = PBXBuildFile; fileRef = 80AF18722CA1EB9F00CFBC18 /* DataLayer.docc */; };
 		80AF18742CA1EB9F00CFBC18 /* DataLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 80AF18712CA1EB9F00CFBC18 /* DataLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		80AF189E2CA1EC9A00CFBC18 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 80AF189D2CA1EC9A00CFBC18 /* Alamofire */; };
@@ -31,6 +34,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		80AA30092CA4938E0098F68B /* PokemonRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRequestBuilder.swift; sourceTree = "<group>"; };
+		80AA300C2CA493F70098F68B /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		80AA30132CA496C60098F68B /* PokemonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRepository.swift; sourceTree = "<group>"; };
 		80AF186E2CA1EB9F00CFBC18 /* DataLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80AF18712CA1EB9F00CFBC18 /* DataLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataLayer.h; sourceTree = "<group>"; };
 		80AF18722CA1EB9F00CFBC18 /* DataLayer.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = DataLayer.docc; sourceTree = "<group>"; };
@@ -52,6 +58,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		80AA30082CA493780098F68B /* RequestBuilders */ = {
+			isa = PBXGroup;
+			children = (
+				80AA30092CA4938E0098F68B /* PokemonRequestBuilder.swift */,
+			);
+			path = RequestBuilders;
+			sourceTree = "<group>";
+		};
+		80AA300B2CA493EE0098F68B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				80AA300C2CA493F70098F68B /* NetworkConstants.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		80AF18642CA1EB9F00CFBC18 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +94,7 @@
 		80AF18702CA1EB9F00CFBC18 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				80AA300B2CA493EE0098F68B /* Utility */,
 				80AF18DF2CA1F12E00CFBC18 /* Repositories */,
 				80AF18A22CA1ECC300CFBC18 /* Networking */,
 				80AF18712CA1EB9F00CFBC18 /* DataLayer.h */,
@@ -83,6 +106,7 @@
 		80AF18A22CA1ECC300CFBC18 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				80AA30082CA493780098F68B /* RequestBuilders */,
 				80AF18A32CA1ECCA00CFBC18 /* Base */,
 			);
 			path = Networking;
@@ -108,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				80AF18E02CA1F17C00CFBC18 /* UserDefaultsRepository.swift */,
+				80AA30132CA496C60098F68B /* PokemonRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -200,7 +225,10 @@
 			files = (
 				80AF18E12CA1F17C00CFBC18 /* UserDefaultsRepository.swift in Sources */,
 				80AF18732CA1EB9F00CFBC18 /* DataLayer.docc in Sources */,
+				80AA300D2CA493F70098F68B /* NetworkConstants.swift in Sources */,
 				80AF18A52CA1ECD700CFBC18 /* ApiClient.swift in Sources */,
+				80AA300A2CA4938E0098F68B /* PokemonRequestBuilder.swift in Sources */,
+				80AA30142CA496C60098F68B /* PokemonRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
