@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80AA30102CA495B70098F68B /* PokemonRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AA300F2CA495B70098F68B /* PokemonRepositoryProtocol.swift */; };
+		80AA30122CA495F20098F68B /* FetchAllPokemonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AA30112CA495F20098F68B /* FetchAllPokemonResponse.swift */; };
+		80AA30172CA4977A0098F68B /* FetchAllPokemonUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AA30162CA4977A0098F68B /* FetchAllPokemonUseCase.swift */; };
+		80AA301A2CA498850098F68B /* GenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AA30192CA498850098F68B /* GenericError.swift */; };
+		80AA301F2CA49D390098F68B /* FetchPokemonDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AA301E2CA49D390098F68B /* FetchPokemonDetailsResponse.swift */; };
+		80AA30212CA49F250098F68B /* FetchPokemonDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AA30202CA49F250098F68B /* FetchPokemonDetailsUseCase.swift */; };
 		80AF188F2CA1EBC000CFBC18 /* DomainLayer.docc in Sources */ = {isa = PBXBuildFile; fileRef = 80AF188E2CA1EBC000CFBC18 /* DomainLayer.docc */; };
 		80AF18902CA1EBC000CFBC18 /* DomainLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 80AF188D2CA1EBC000CFBC18 /* DomainLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		80AF18B52CA1EDD600CFBC18 /* BaseNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AF18B42CA1EDD600CFBC18 /* BaseNetworkError.swift */; };
@@ -17,6 +23,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		80AA300F2CA495B70098F68B /* PokemonRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRepositoryProtocol.swift; sourceTree = "<group>"; };
+		80AA30112CA495F20098F68B /* FetchAllPokemonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllPokemonResponse.swift; sourceTree = "<group>"; };
+		80AA30162CA4977A0098F68B /* FetchAllPokemonUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllPokemonUseCase.swift; sourceTree = "<group>"; };
+		80AA30192CA498850098F68B /* GenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericError.swift; sourceTree = "<group>"; };
+		80AA301E2CA49D390098F68B /* FetchPokemonDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPokemonDetailsResponse.swift; sourceTree = "<group>"; };
+		80AA30202CA49F250098F68B /* FetchPokemonDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPokemonDetailsUseCase.swift; sourceTree = "<group>"; };
 		80AF188A2CA1EBC000CFBC18 /* DomainLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DomainLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80AF188D2CA1EBC000CFBC18 /* DomainLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DomainLayer.h; sourceTree = "<group>"; };
 		80AF188E2CA1EBC000CFBC18 /* DomainLayer.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = DomainLayer.docc; sourceTree = "<group>"; };
@@ -38,6 +50,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		80AA300E2CA495A70098F68B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				80AA300F2CA495B70098F68B /* PokemonRepositoryProtocol.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		80AA30152CA4976C0098F68B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				80AA30162CA4977A0098F68B /* FetchAllPokemonUseCase.swift */,
+				80AA30202CA49F250098F68B /* FetchPokemonDetailsUseCase.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		80AA30182CA498760098F68B /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				80AA30192CA498850098F68B /* GenericError.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		80AF18802CA1EBC000CFBC18 = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +94,7 @@
 		80AF188C2CA1EBC000CFBC18 /* DomainLayer */ = {
 			isa = PBXGroup;
 			children = (
+				80AA30182CA498760098F68B /* Enums */,
 				80AF18DC2CA1F0D800CFBC18 /* Extensions */,
 				80AF18D82CA1F08F00CFBC18 /* RepositoryProtocols */,
 				80AF18D42CA1F05500CFBC18 /* UseCases */,
@@ -71,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				80AF18B42CA1EDD600CFBC18 /* BaseNetworkError.swift */,
+				80AA30112CA495F20098F68B /* FetchAllPokemonResponse.swift */,
+				80AA301E2CA49D390098F68B /* FetchPokemonDetailsResponse.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -78,6 +118,7 @@
 		80AF18D42CA1F05500CFBC18 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				80AA30152CA4976C0098F68B /* Networking */,
 				80AF18D52CA1F05D00CFBC18 /* General */,
 			);
 			path = UseCases;
@@ -94,6 +135,7 @@
 		80AF18D82CA1F08F00CFBC18 /* RepositoryProtocols */ = {
 			isa = PBXGroup;
 			children = (
+				80AA300E2CA495A70098F68B /* Networking */,
 				80AF18D92CA1F0A000CFBC18 /* General */,
 			);
 			path = RepositoryProtocols;
@@ -203,8 +245,14 @@
 				80AF18D72CA1F07800CFBC18 /* UserDefaultsUseCase.swift in Sources */,
 				80AF18B52CA1EDD600CFBC18 /* BaseNetworkError.swift in Sources */,
 				80AF18DE2CA1F0E300CFBC18 /* UserDefaults+.swift in Sources */,
+				80AA30102CA495B70098F68B /* PokemonRepositoryProtocol.swift in Sources */,
+				80AA30172CA4977A0098F68B /* FetchAllPokemonUseCase.swift in Sources */,
 				80AF18DB2CA1F0AE00CFBC18 /* UserDefaultsRepositoryProtocol.swift in Sources */,
+				80AA301A2CA498850098F68B /* GenericError.swift in Sources */,
 				80AF188F2CA1EBC000CFBC18 /* DomainLayer.docc in Sources */,
+				80AA301F2CA49D390098F68B /* FetchPokemonDetailsResponse.swift in Sources */,
+				80AA30122CA495F20098F68B /* FetchAllPokemonResponse.swift in Sources */,
+				80AA30212CA49F250098F68B /* FetchPokemonDetailsUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

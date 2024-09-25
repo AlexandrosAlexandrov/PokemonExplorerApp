@@ -21,11 +21,23 @@ class AppAssembler: ObservableObject {
         //User Defaults
         registerUserDefaultsRepoDependencies()
         registerUserDefaultsUseCaseDepdencies()
+        
+        //Pokemon API
+        registerPokemonRepoDependencies()
+        registerFetchAllPokemonUseCaseDependencies()
+        registerFetchPokemonDetailsUseCaseDependencies()
+        
     }
     
     private func registerUserDefaultsRepoDependencies() {
         mainAppContainer.register(UserDefaultsRepositoryProtocol.self) { _ in
             UserDefaultsRepositoryImpl()
+        }
+    }
+    
+    private func registerPokemonRepoDependencies() {
+        mainAppContainer.register(PokemonRepositoryProtocol.self) { _ in
+            PokemonRepository()
         }
     }
     
@@ -35,4 +47,19 @@ class AppAssembler: ObservableObject {
             return UserDefaultsUseCase(userDefaultsRepo: userDefaultsRepo)
         }
     }
+    
+    private func registerFetchAllPokemonUseCaseDependencies() {
+        mainAppContainer.register(FetchAllPokemonUseCase.self) { r in
+            let pokemonRepo = r.resolve(PokemonRepositoryProtocol.self)!
+            return FetchAllPokemonUseCase(pokemonRepository: pokemonRepo)
+        }
+    }
+    
+    private func registerFetchPokemonDetailsUseCaseDependencies() {
+        mainAppContainer.register(FetchPokemonDetailsUseCase.self) { r in
+            let pokemonRepo = r.resolve(PokemonRepositoryProtocol.self)!
+            return FetchPokemonDetailsUseCase(pokemonRepository: pokemonRepo)
+        }
+    }
+
 }
