@@ -12,12 +12,16 @@ import Combine
 
 public struct PokemonRepository: PokemonRepositoryProtocol {
     
-    public init() {
-        
-    }
+    public init() {}
     
     public func fetchAllPokemon(itemCount: Int) throws -> AnyPublisher<DataResponse<FetchAllPokemonResponse, BaseNetworkError>, Never> {
         let urlRequest = try PokemonRequestBuilder.fetchAllPokemon(itemCount: itemCount).asURLRequest()
+        
+        return ApiClient.requestCodable(urlRequest)
+    }
+    
+    public func fetchPokemonDetails(name: String) throws -> AnyPublisher<DataResponse<FetchPokemonDetailsResponse, BaseNetworkError>, Never> {
+        let urlRequest = try PokemonRequestBuilder.fetchPokemonDetails(name: name).asURLRequest()
         
         return ApiClient.requestCodable(urlRequest)
     }

@@ -25,6 +25,7 @@ class AppAssembler: ObservableObject {
         //Pokemon API
         registerPokemonRepoDependencies()
         registerFetchAllPokemonUseCaseDependencies()
+        registerFetchPokemonDetailsUseCaseDependencies()
         
     }
     
@@ -51,6 +52,13 @@ class AppAssembler: ObservableObject {
         mainAppContainer.register(FetchAllPokemonUseCase.self) { r in
             let pokemonRepo = r.resolve(PokemonRepositoryProtocol.self)!
             return FetchAllPokemonUseCase(pokemonRepository: pokemonRepo)
+        }
+    }
+    
+    private func registerFetchPokemonDetailsUseCaseDependencies() {
+        mainAppContainer.register(FetchPokemonDetailsUseCase.self) { r in
+            let pokemonRepo = r.resolve(PokemonRepositoryProtocol.self)!
+            return FetchPokemonDetailsUseCase(pokemonRepository: pokemonRepo)
         }
     }
 

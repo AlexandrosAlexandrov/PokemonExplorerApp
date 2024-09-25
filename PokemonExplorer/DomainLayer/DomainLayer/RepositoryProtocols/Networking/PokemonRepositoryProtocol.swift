@@ -11,4 +11,5 @@ import Alamofire
 
 public protocol PokemonRepositoryProtocol {
     func fetchAllPokemon(itemCount: Int) throws -> AnyPublisher<DataResponse<FetchAllPokemonResponse, BaseNetworkError>, Never>
+    func fetchPokemonDetails(name: String) throws -> AnyPublisher<DataResponse<FetchPokemonDetailsResponse, BaseNetworkError>, Never>
 }

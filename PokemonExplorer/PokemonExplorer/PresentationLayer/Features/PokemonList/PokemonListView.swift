@@ -11,13 +11,26 @@ struct PokemonListView: View {
     @StateObject var viewModel = PokemonListViewModel()
     
     var body: some View {
+        Group {
+            title
+            pokemonList
+        }
+        .background(.bgGreen)
+    }
+    
+    var title: some View {
+        Text("Pokemon Explorer")
+            .font(.title)
+    }
+    
+    var pokemonList: some View {
         ScrollView {
-            LazyVStack {
+            LazyVStack(alignment: .leading) {
                 ForEach(viewModel.pokemon, id:\.self) { pokemon in
-                    Text(pokemon.name ?? "")
+                    PokemonDetailsView(name: pokemon.name)
                 }
             }
-            .padding()
+            .padding(.horizontal, 18)
         }
     }
 }
