@@ -6,16 +6,30 @@
 //
 
 import SwiftUI
+import DomainLayer
 
 struct PokemonListView: View {
     @StateObject var viewModel = PokemonListViewModel()
     
     var body: some View {
-        Group {
-            title
-            pokemonList
+        ZStack {
+            mainView
+            loader
         }
         .background(.bgGreen)
+        .onChange(of: viewModel.typeSelection) {
+            viewModel.fetchPokemon()
+        }
+    }
+    
+    var mainView: some View {
+        VStack(spacing: 0) {
+            title
+            typePickerTitle
+            typePicker
+            pokemonList
+            Spacer()
+        }
     }
     
     var title: some View {
@@ -23,14 +37,39 @@ struct PokemonListView: View {
             .font(.title)
     }
     
-    var pokemonList: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading) {
-                ForEach(viewModel.pokemon, id:\.self) { pokemon in
-                    PokemonDetailsView(name: pokemon.name)
-                }
+    var typePickerTitle: some View {
+        Text("Select a pokemon type:")
+            .font(.title2)
+    }
+    
+    var typePicker: some View {
+        Picker("Select Type", selection: $viewModel.typeSelection) {
+            ForEach(viewModel.pokemonTypes, id: \.self) { type in
+                Text("\(type.rawValue.capitalizingFirstLetter())")
             }
-            .padding(.horizontal, 18)
+        }
+        .padding()
+    }
+    
+    @ViewBuilder
+    var pokemonList: some View {
+        if !viewModel.loading {
+            ScrollView(showsIndicators: false) {
+                LazyVStack(alignment: .leading) {
+                    ForEach(viewModel.pokemon, id:\.self) { pokemon in
+                        PokemonDetailsView(name: pokemon.name)
+                    }
+                }
+                .padding(.horizontal, 18)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    var loader: some View {
+        if viewModel.loading {
+            ProgressView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }

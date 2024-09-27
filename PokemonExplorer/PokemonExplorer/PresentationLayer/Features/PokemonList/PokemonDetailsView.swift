@@ -9,14 +9,18 @@ import SwiftUI
 import Kingfisher
 
 struct PokemonDetailsView: View {
-    let name: String?
-    
     @StateObject var viewModel = PokemonDetailsViewModel()
     
+    let name: String?
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            pokeName
-            pokeStats
+        ZStack {
+            VStack(alignment: .leading) {
+                pokeName
+                pokeStats
+            }
+            
+            loader
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .overlay(
@@ -52,6 +56,13 @@ struct PokemonDetailsView: View {
             Text("HP: \(viewModel.getPokemonStat(.hp))")
             Text("Attack: \(viewModel.getPokemonStat(.attack))")
             Text("Defense: \(viewModel.getPokemonStat(.defense))")
+        }
+    }
+    
+    @ViewBuilder
+    var loader: some View {
+        if viewModel.loading {
+            ProgressView()
         }
     }
 }
