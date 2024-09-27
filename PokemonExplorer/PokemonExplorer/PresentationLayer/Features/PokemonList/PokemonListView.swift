@@ -16,6 +16,7 @@ struct PokemonListView: View {
             mainView
             loader
         }
+        .padding(.horizontal, 18)
         .background(.bgGreen)
         .onChange(of: viewModel.typeSelection) {
             viewModel.fetchPokemon()
@@ -27,6 +28,7 @@ struct PokemonListView: View {
             title
             typePickerTitle
             typePicker
+            pokemonListTitle
             pokemonList
             Spacer()
         }
@@ -40,6 +42,8 @@ struct PokemonListView: View {
     var typePickerTitle: some View {
         Text("Select a pokemon type:")
             .font(.title2)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.vertical)
     }
     
     var typePicker: some View {
@@ -48,19 +52,24 @@ struct PokemonListView: View {
                 Text("\(type.rawValue.capitalizingFirstLetter())")
             }
         }
-        .padding()
+    }
+    
+    var pokemonListTitle: some View {
+        Text("Pokemon:")
+            .font(.title2)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.bottom)
     }
     
     @ViewBuilder
     var pokemonList: some View {
         if !viewModel.loading {
             ScrollView(showsIndicators: false) {
-                LazyVStack(alignment: .leading) {
+                VStack(alignment: .leading) {
                     ForEach(viewModel.pokemon, id:\.self) { pokemon in
                         PokemonDetailsView(name: pokemon.name)
                     }
                 }
-                .padding(.horizontal, 18)
             }
         }
     }
