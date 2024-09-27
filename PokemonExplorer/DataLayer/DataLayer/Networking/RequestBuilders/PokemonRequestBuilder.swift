@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import DomainLayer
 
 public enum PokemonRequestBuilder: URLRequestConvertible {
     
@@ -34,13 +35,14 @@ public enum PokemonRequestBuilder: URLRequestConvertible {
     
     case fetchAllPokemon(itemCount: Int)
     case fetchPokemonDetails(name: String)
+    case fetchPokemonByType(type: PokemonType)
     
     
     //MARK: - HttpMethod
     //This returns the HttpMethod type. It's used to determine the type if several endpoints are peresent
     private var method: HTTPMethod {
         switch self {
-        case .fetchAllPokemon, .fetchPokemonDetails:
+        case .fetchAllPokemon, .fetchPokemonDetails, .fetchPokemonByType:
             return .get
         }
     }
@@ -53,6 +55,8 @@ public enum PokemonRequestBuilder: URLRequestConvertible {
             return "pokemon"
         case .fetchPokemonDetails(let name):
             return "pokemon/\(name)"
+        case .fetchPokemonByType(let type):
+            return "type/\(type.rawValue)"
         }
     }
     

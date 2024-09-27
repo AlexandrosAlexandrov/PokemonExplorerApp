@@ -25,4 +25,10 @@ public struct PokemonRepository: PokemonRepositoryProtocol {
         
         return ApiClient.requestCodable(urlRequest)
     }
+    
+    public func fetchPokemonByType(type: PokemonType) throws -> AnyPublisher<DataResponse<FetchPokemonByTypeResponse, BaseNetworkError>, Never> {
+        let urlRequest = try PokemonRequestBuilder.fetchPokemonByType(type: type).asURLRequest()
+        
+        return ApiClient.requestCodable(urlRequest)
+    }
 }

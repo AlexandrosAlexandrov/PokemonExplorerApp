@@ -13,4 +13,8 @@ public struct FetchAllPokemonResponse: Codable {
 
 public struct PokemonResult: Codable, Hashable {
     public let name: String?
+    
+    public init(name: String?) {
+        self.name = name
+    }
 }

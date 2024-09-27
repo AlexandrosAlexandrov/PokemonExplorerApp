@@ -10,12 +10,14 @@ import DomainLayer
 
 class PokemonDetailsViewModel: ObservableObject {
     @Published var pokemonDetails: FetchPokemonDetailsResponse?
+    @Published var loading = false
     
     @Inject var fetchPokemonDetailsUseCase: FetchPokemonDetailsUseCase?
     
     init() {}
     
     public func fetchPokemonDetails(name: String) {
+        loading = true
         fetchPokemonDetailsUseCase?.execute(name: name, completion: { result in
             switch result {
             case .success(let pokemonResponse):
@@ -24,6 +26,8 @@ class PokemonDetailsViewModel: ObservableObject {
             case .failure(let error):
                 print("Failure getting details :( ", error)
             }
+            
+            self.loading = false
         })
     }
     
