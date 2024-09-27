@@ -39,9 +39,21 @@ struct PokemonDetailsView: View {
     }
     
     var pokeName: some View {
-        Text(name?.capitalizingFirstLetter() ?? "")
-            .font(.title3)
-            .padding(.leading, 8)
+        HStack {
+            Text(name?.capitalizingFirstLetter() ?? "")
+                .font(.title3)
+            
+            Spacer()
+            
+            Image(systemName: "heart")
+                .resizable()
+                .frame(width: 30, height: 30)
+                .padding(.top, 5)
+                .onTapGesture {
+                    print("\(name ?? "") is now favorite!")
+                }
+        }
+        .padding(.horizontal, 8)
     }
     
     var pokeStats: some View {
