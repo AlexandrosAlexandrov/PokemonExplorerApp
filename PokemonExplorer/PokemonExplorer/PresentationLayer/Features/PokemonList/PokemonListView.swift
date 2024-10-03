@@ -28,8 +28,12 @@ struct PokemonListView: View {
             title
             typePickerTitle
             typePicker
-            pokemonListTitle
-            pokemonList
+            ScrollView(showsIndicators: false) {
+                favoritePokemonListTitle
+                favoritePokemonList
+                pokemonListTitle
+                pokemonList
+            }
             Spacer()
         }
     }
@@ -64,12 +68,25 @@ struct PokemonListView: View {
     @ViewBuilder
     var pokemonList: some View {
         if !viewModel.loading {
-            ScrollView(showsIndicators: false) {
-                VStack(alignment: .leading) {
-                    ForEach(viewModel.pokemon, id:\.self) { pokemon in
-                        PokemonDetailsView(name: pokemon.name)
-                    }
+            VStack(alignment: .leading) {
+                ForEach(viewModel.pokemon, id:\.self) { pokemon in
+                    PokemonDetailsView(viewModel: viewModel.createPokemonDetailsViewModel(name: pokemon.name))
                 }
+            }
+        }
+    }
+    
+    var favoritePokemonListTitle: some View {
+        Text("Favorite Pokemon:")
+            .font(.title2)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.bottom)
+    }
+    
+    var favoritePokemonList: some View {
+        VStack(alignment: .leading) {
+            ForEach(viewModel.favoritePokemon, id:\.self) { pokemon in
+                PokemonDetailsView(viewModel: viewModel.createPokemonDetailsViewModel(name: pokemon.name))
             }
         }
     }

@@ -9,9 +9,8 @@ import SwiftUI
 import Kingfisher
 
 struct PokemonDetailsView: View {
-    @StateObject var viewModel = PokemonDetailsViewModel()
-    
-    let name: String?
+    @StateObject var viewModel: PokemonDetailsViewModel
+    @AppStorage("checkFavorite") var checkFavorite = false
     
     var body: some View {
         ZStack {
@@ -27,21 +26,38 @@ struct PokemonDetailsView: View {
             RoundedRectangle(cornerRadius: 8)
                 .stroke(.black)
         )
-        .onAppear {
-            viewModel.fetchPokemonDetails(name: name ?? "")
-        }
         .background(.bgBlue)
+        .onChange(of: checkFavorite) { _, _ in
+            viewModel.checkIfPokemonFavorite()
+        }
         
     }
     
+    @ViewBuilder
     var sprite: some View {
-        KFImage(URL(string: viewModel.pokemonDetails?.sprites?.defaultSprite ?? ""))
+        if viewModel.isFavorite {
+            Image(uiImage: ImageSaver.getSavedImage(for: viewModel.name)!)
+        } else {
+            KFImage(URL(string: viewModel.pokemonDetails?.sprites?.defaultSprite ?? ""))
+        }
     }
     
     var pokeName: some View {
-        Text(name?.capitalizingFirstLetter() ?? "")
-            .font(.title3)
-            .padding(.leading, 8)
+        HStack {
+            Text(viewModel.name.capitalizingFirstLetter())
+                .font(.title3)
+            
+            Spacer()
+            
+            Image(systemName: viewModel.isFavorite ? "heart.fill" : "heart")
+                .resizable()
+                .frame(width: 30, height: 30)
+                .padding(.top, 5)
+                .onTapGesture {
+                    viewModel.toggleFavorite()
+                }
+        }
+        .padding(.horizontal, 8)
     }
     
     var pokeStats: some View {

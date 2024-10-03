@@ -7,19 +7,24 @@
 
 import Foundation
 import DomainLayer
+import SwiftUI
 
 class PokemonListViewModel: ObservableObject {
-    @Published var pokemon: [PokemonResult] = []
+    @Published var pokemon = [PokemonResult]()
+    @Published var favoritePokemon = [FavoritePokemon]()
     @Published var pokemonTypes = PokemonType.allCases
     @Published var typeSelection = PokemonType.all
     
+    @Published var favoriteToggle = false
     @Published var loading = false
     
     @Inject var fetchAllPokemonUseCase: FetchAllPokemonUseCase?
     @Inject var fetchPokemonByTypeUseCase: FetchPokemonByTypeUseCase?
+    @Inject var userDefaultsUseCase: UserDefaultsUseCase?
     
     init() {
         fetchAllPokemon()
+        fetchFavoritePokemon()
     }
     
     private func fetchAllPokemon() {
@@ -52,6 +57,14 @@ class PokemonListViewModel: ObservableObject {
         })
     }
     
+    public func createPokemonDetailsViewModel(name: String?) -> PokemonDetailsViewModel {
+        PokemonDetailsViewModel(delegate: self, name: name ?? "")
+    }
+    
+    public func fetchFavoritePokemon() {
+        self.favoritePokemon = userDefaultsUseCase?.getFavoritePokemon() ?? []
+    }
+    
     public func fetchPokemon() {
         switch typeSelection {
         case .all:
@@ -60,4 +73,14 @@ class PokemonListViewModel: ObservableObject {
             self.fetchPokemonByType(type: typeSelection)
         }
     }
+}
+
+extension PokemonListViewModel: PokemonDetailsViewModelDelegate {
+    func toggledFavorite() {
+        withAnimation {
+            fetchFavoritePokemon()
+            favoriteToggle.toggle()
+        }
+    }
+    
 }
