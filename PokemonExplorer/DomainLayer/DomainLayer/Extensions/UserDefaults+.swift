@@ -9,6 +9,7 @@ extension UserDefaults {
     
     public enum Key: String {
         case favouritePokemon
+        case checkFavorite
     }
     
 }
