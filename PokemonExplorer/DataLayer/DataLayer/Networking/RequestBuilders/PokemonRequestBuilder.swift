@@ -33,7 +33,7 @@ public enum PokemonRequestBuilder: URLRequestConvertible {
         return try encoding.encode(urlRequest, with: parameters)
     }
     
-    case fetchAllPokemon(itemCount: Int)
+    case fetchAllPokemon(itemCount: Int, page: Int)
     case fetchPokemonDetails(name: String)
     case fetchPokemonByType(type: PokemonType)
     
@@ -64,10 +64,17 @@ public enum PokemonRequestBuilder: URLRequestConvertible {
     //This is the queries part, it's optional because an endpoint can be without parameters
     private var parameters: Parameters? {
         switch self {
-        case .fetchAllPokemon(let itemCount):
-            return [
-                "limit": itemCount
-            ]
+        case .fetchAllPokemon(let itemCount, let page):
+            if page > 1 {
+                return [
+                    "limit": itemCount,
+                    "offset": page * itemCount
+                ]
+            } else {
+                return [
+                    "limit": itemCount
+                ]
+            }
         default:
             return nil
         }

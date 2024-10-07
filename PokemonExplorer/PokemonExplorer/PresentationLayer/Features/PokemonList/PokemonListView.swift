@@ -10,6 +10,7 @@ import DomainLayer
 
 struct PokemonListView: View {
     @StateObject var viewModel = PokemonListViewModel()
+    @StateObject var networkMonitor = NetworkMonitor()
     
     var body: some View {
         ZStack {
@@ -26,40 +27,55 @@ struct PokemonListView: View {
     var mainView: some View {
         VStack(spacing: 0) {
             title
-            typePickerTitle
-            typePicker
-            ScrollView(showsIndicators: false) {
-                favoritePokemonListTitle
-                favoritePokemonList
-                pokemonListTitle
-                pokemonList
-            }
+            pokemonLists
             Spacer()
         }
     }
     
+    var pokemonLists: some View {
+        ScrollView(showsIndicators: false) {
+            typePickerTitle
+            typePicker
+            favoritePokemonListTitle
+            favoritePokemonList
+            pokemonListTitle
+            pokemonSection
+        }
+    }
+    
     var title: some View {
-        Text("Pokemon Explorer")
+        CustomText(.mainViewTitle)
             .font(.title)
     }
     
     var typePickerTitle: some View {
-        Text("Select a pokemon type:")
+        CustomText(.typeSelectTitle)
             .font(.title2)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.vertical)
     }
     
     var typePicker: some View {
-        Picker("Select Type", selection: $viewModel.typeSelection) {
+        Menu {
             ForEach(viewModel.pokemonTypes, id: \.self) { type in
-                Text("\(type.rawValue.capitalizingFirstLetter())")
+                Button(action: {
+                    viewModel.typeSelection = type
+                }) {
+                    CustomText("\(type.rawValue.capitalizingFirstLetter())")
+                }
             }
+        } label: {
+            CustomText("\(viewModel.typeSelection.rawValue.capitalizingFirstLetter())")
+                .foregroundColor(.black)
+                .padding(.vertical)
+                .padding(.horizontal, 30)
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(8)
         }
     }
     
     var pokemonListTitle: some View {
-        Text("Pokemon:")
+        CustomText(.pokemonListTitle)
             .font(.title2)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom)
@@ -67,26 +83,46 @@ struct PokemonListView: View {
     
     @ViewBuilder
     var pokemonList: some View {
-        if !viewModel.loading {
-            VStack(alignment: .leading) {
+            LazyVStack(alignment: .leading) {
                 ForEach(viewModel.pokemon, id:\.self) { pokemon in
-                    PokemonDetailsView(viewModel: viewModel.createPokemonDetailsViewModel(name: pokemon.name))
+                    PokemonDetailsView(
+                        viewModel: viewModel.createPokemonDetailsViewModel(name: pokemon.name)
+                    )
+                    .onAppear {
+                        if pokemon == viewModel.pokemon[viewModel.pokemon.count - 5] {
+                            viewModel.fetchPokemon(paginated: true)
+                        }
+                    }
                 }
+                loader
             }
+    }
+    
+    @ViewBuilder
+    var pokemonSection: some View {
+        if networkMonitor.isNetworkAvailable {
+            pokemonList
+        } else {
+            noInternetError
         }
     }
     
     var favoritePokemonListTitle: some View {
-        Text("Favorite Pokemon:")
+        CustomText(.favPokemonListTitle)
             .font(.title2)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom)
     }
     
     var favoritePokemonList: some View {
-        VStack(alignment: .leading) {
-            ForEach(viewModel.favoritePokemon, id:\.self) { pokemon in
-                PokemonDetailsView(viewModel: viewModel.createPokemonDetailsViewModel(name: pokemon.name))
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(viewModel.favoritePokemon, id:\.self) { pokemon in
+                    PokemonDetailsView(
+                        viewModel: viewModel.createPokemonDetailsViewModel(name: pokemon.name)
+                    )
+                    .frame(width: 250)
+                }
             }
         }
     }
@@ -96,7 +132,16 @@ struct PokemonListView: View {
         if viewModel.loading {
             ProgressView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .padding()
         }
     }
+    
+    var noInternetError: some View {
+        CustomText(.noInternetError)
+            .multilineTextAlignment(.center)
+            .frame(maxHeight: .infinity)
+            .padding(.top, 40)
+    }
+
 }
 

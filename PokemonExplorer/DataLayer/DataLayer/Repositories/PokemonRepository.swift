@@ -14,8 +14,8 @@ public struct PokemonRepository: PokemonRepositoryProtocol {
     
     public init() {}
     
-    public func fetchAllPokemon(itemCount: Int) throws -> AnyPublisher<DataResponse<FetchAllPokemonResponse, BaseNetworkError>, Never> {
-        let urlRequest = try PokemonRequestBuilder.fetchAllPokemon(itemCount: itemCount).asURLRequest()
+    public func fetchAllPokemon(itemCount: Int, page: Int = 1) throws -> AnyPublisher<DataResponse<FetchAllPokemonResponse, BaseNetworkError>, Never> {
+        let urlRequest = try PokemonRequestBuilder.fetchAllPokemon(itemCount: itemCount, page: page).asURLRequest()
         
         return ApiClient.requestCodable(urlRequest)
     }

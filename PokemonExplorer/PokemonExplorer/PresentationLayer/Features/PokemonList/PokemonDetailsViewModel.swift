@@ -35,13 +35,12 @@ class PokemonDetailsViewModel: ObservableObject {
         fetchPokemonDetailsUseCase?.execute(name: name, completion: { result in
             switch result {
             case .success(let pokemonResponse):
-                print("Success getting details!")
                 self.pokemonDetails = pokemonResponse
                 ImageSaver.downloadAndSaveImage(for: self.name, from: pokemonResponse.sprites?.defaultSprite ?? "") { _ in
                     
                 }
             case .failure(let error):
-                print("Failure getting details :( ", error)
+                print("Failure :( ", error)
             }
             
             self.loading = false
@@ -55,7 +54,6 @@ class PokemonDetailsViewModel: ObservableObject {
         for pokemon in favPokemon ?? [] {
             if pokemon.name == name {
                 self.isFavorite = true
-                print("\(name) is favorite")
             }
         }
     }

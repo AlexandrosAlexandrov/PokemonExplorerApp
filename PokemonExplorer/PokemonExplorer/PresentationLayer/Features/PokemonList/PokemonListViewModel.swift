@@ -17,23 +17,31 @@ class PokemonListViewModel: ObservableObject {
     
     @Published var favoriteToggle = false
     @Published var loading = false
+    @Published var page = 2
+    @Published var lastYOffset: CGFloat?
     
     @Inject var fetchAllPokemonUseCase: FetchAllPokemonUseCase?
     @Inject var fetchPokemonByTypeUseCase: FetchPokemonByTypeUseCase?
     @Inject var userDefaultsUseCase: UserDefaultsUseCase?
+    
+    private let itemCount = 30
     
     init() {
         fetchAllPokemon()
         fetchFavoritePokemon()
     }
     
-    private func fetchAllPokemon() {
+    private func fetchAllPokemon(paginated: Bool = false) {
         loading = true
-        fetchAllPokemonUseCase?.execute(itemCount: 151, completion: { result in
+        fetchAllPokemonUseCase?.execute(itemCount: itemCount, page: paginated ? page : 1, completion: { result in
             switch result {
             case .success(let pokemonResponse):
-                print("Success!")
-                self.pokemon = pokemonResponse.results ?? []
+                if paginated {
+                    self.pokemon += pokemonResponse.results ?? []
+                    self.page += 1
+                } else {
+                    self.pokemon = pokemonResponse.results ?? []
+                }
             case .failure(let error):
                 print("Failure :( ", error)
             }
@@ -43,11 +51,11 @@ class PokemonListViewModel: ObservableObject {
     }
     
     private func fetchPokemonByType(type: PokemonType) {
+        page = 2
         loading = true
         fetchPokemonByTypeUseCase?.execute(type: type, completion: { result in
             switch result {
             case .success(let pokemonResponse):
-                print("Success!")
                 self.pokemon = pokemonResponse.convertToPokemonResultArray()
             case .failure(let error):
                 print("Failure :( ", error)
@@ -65,10 +73,10 @@ class PokemonListViewModel: ObservableObject {
         self.favoritePokemon = userDefaultsUseCase?.getFavoritePokemon() ?? []
     }
     
-    public func fetchPokemon() {
+    public func fetchPokemon(paginated: Bool = false) {
         switch typeSelection {
         case .all:
-            self.fetchAllPokemon()
+            self.fetchAllPokemon(paginated: paginated)
         default:
             self.fetchPokemonByType(type: typeSelection)
         }
