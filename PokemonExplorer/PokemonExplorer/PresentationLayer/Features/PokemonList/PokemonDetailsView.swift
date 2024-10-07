@@ -39,6 +39,9 @@ struct PokemonDetailsView: View {
             Image(uiImage: ImageSaver.getSavedImage(for: viewModel.name)!)
         } else {
             KFImage(URL(string: viewModel.pokemonDetails?.sprites?.defaultSprite ?? ""))
+                .placeholder({ _ in
+                    loader
+                })
         }
     }
     
@@ -49,7 +52,7 @@ struct PokemonDetailsView: View {
             
             Spacer()
             
-            Image(systemName: viewModel.isFavorite ? "heart.fill" : "heart")
+            Image(systemName: viewModel.isFavorite ? Icons.liked.rawValue : Icons.unliked.rawValue)
                 .resizable()
                 .frame(width: 30, height: 30)
                 .padding(.top, 5)
@@ -69,9 +72,9 @@ struct PokemonDetailsView: View {
     
     var statsList: some View {
         VStack(alignment: .leading) {
-            Text("HP: \(viewModel.getPokemonStat(.hp))")
-            Text("Attack: \(viewModel.getPokemonStat(.attack))")
-            Text("Defense: \(viewModel.getPokemonStat(.defense))")
+            CustomText(Strings.hp.rawValue + "\(viewModel.getPokemonStat(.hp))")
+            CustomText(Strings.attack.rawValue + "\(viewModel.getPokemonStat(.attack))")
+            CustomText(Strings.defense.rawValue + "\(viewModel.getPokemonStat(.defense))")
         }
     }
     

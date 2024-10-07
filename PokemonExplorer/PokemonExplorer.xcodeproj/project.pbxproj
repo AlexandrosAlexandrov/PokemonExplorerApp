@@ -12,6 +12,8 @@
 		804C99932CA1E9B4002B83EB /* PokemonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804C99922CA1E9B4002B83EB /* PokemonListView.swift */; };
 		804C99952CA1E9B5002B83EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 804C99942CA1E9B5002B83EB /* Assets.xcassets */; };
 		804C99992CA1E9B5002B83EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 804C99982CA1E9B5002B83EB /* Preview Assets.xcassets */; };
+		804D9FB82CB45689007ECF2D /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804D9FB72CB45689007ECF2D /* Icons.swift */; };
+		804D9FC42CB45811007ECF2D /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804D9FC32CB45811007ECF2D /* NetworkMonitor.swift */; };
 		80AA301D2CA49A060098F68B /* PokemonListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AA301C2CA49A060098F68B /* PokemonListViewModel.swift */; };
 		80AA30232CA4A1400098F68B /* PokemonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AA30222CA4A1400098F68B /* PokemonDetailsView.swift */; };
 		80AA30252CA4A17E0098F68B /* PokemonDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AA30242CA4A17E0098F68B /* PokemonDetailsViewModel.swift */; };
@@ -27,6 +29,8 @@
 		80AF18C32CA1EEF500CFBC18 /* DomainLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80AF189B2CA1EBC100CFBC18 /* DomainLayer.framework */; };
 		80AF18C42CA1EEF500CFBC18 /* DomainLayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80AF189B2CA1EBC100CFBC18 /* DomainLayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80AF18E42CA1F2A600CFBC18 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AF18E32CA1F2A600CFBC18 /* View+.swift */; };
+		80DEC2212CB320800062B601 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEC2202CB320800062B601 /* Strings.swift */; };
+		80DEC2252CB321560062B601 /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEC2242CB321560062B601 /* CustomText.swift */; };
 		80EB7AA32CAF0DCA005A3D79 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EB7AA22CAF0DCA005A3D79 /* ImageSaver.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +73,9 @@
 		804C99942CA1E9B5002B83EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		804C99962CA1E9B5002B83EB /* PokemonExplorer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PokemonExplorer.entitlements; sourceTree = "<group>"; };
 		804C99982CA1E9B5002B83EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		804D9FB72CB45689007ECF2D /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		804D9FC32CB45811007ECF2D /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		804D9FD72CB471A6007ECF2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		80AA301C2CA49A060098F68B /* PokemonListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListViewModel.swift; sourceTree = "<group>"; };
 		80AA30222CA4A1400098F68B /* PokemonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsView.swift; sourceTree = "<group>"; };
 		80AA30242CA4A17E0098F68B /* PokemonDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -80,6 +87,8 @@
 		80AF18BB2CA1EEA200CFBC18 /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		80AF18BD2CA1EED300CFBC18 /* AppAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembler.swift; sourceTree = "<group>"; };
 		80AF18E32CA1F2A600CFBC18 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		80DEC2202CB320800062B601 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		80DEC2242CB321560062B601 /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
 		80EB7AA22CAF0DCA005A3D79 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +130,7 @@
 		804C998F2CA1E9B4002B83EB /* PokemonExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				804D9FD72CB471A6007ECF2D /* Info.plist */,
 				80AF18B82CA1EE7600CFBC18 /* Swinject */,
 				80AF18B72CA1EE7100CFBC18 /* AppCore */,
 				80AF18B62CA1EE6700CFBC18 /* PresentationLayer */,
@@ -232,6 +242,7 @@
 		80AF18E62CA1F2E800CFBC18 /* Reusables */ = {
 			isa = PBXGroup;
 			children = (
+				80DEC2242CB321560062B601 /* CustomText.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -239,6 +250,8 @@
 		80AF18E72CA1F30500CFBC18 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				80DEC2202CB320800062B601 /* Strings.swift */,
+				804D9FB72CB45689007ECF2D /* Icons.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -247,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				80EB7AA22CAF0DCA005A3D79 /* ImageSaver.swift */,
+				804D9FC32CB45811007ECF2D /* NetworkMonitor.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -360,12 +374,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				804C99932CA1E9B4002B83EB /* PokemonListView.swift in Sources */,
+				804D9FC42CB45811007ECF2D /* NetworkMonitor.swift in Sources */,
 				80AF18BA2CA1EE9200CFBC18 /* InjectProperty.swift in Sources */,
 				80AA302A2CA4A34F0098F68B /* String+.swift in Sources */,
 				804C99912CA1E9B4002B83EB /* PokemonExplorerApp.swift in Sources */,
 				80AF18BE2CA1EED300CFBC18 /* AppAssembler.swift in Sources */,
 				80AA301D2CA49A060098F68B /* PokemonListViewModel.swift in Sources */,
 				80AA30232CA4A1400098F68B /* PokemonDetailsView.swift in Sources */,
+				80DEC2252CB321560062B601 /* CustomText.swift in Sources */,
+				804D9FB82CB45689007ECF2D /* Icons.swift in Sources */,
+				80DEC2212CB320800062B601 /* Strings.swift in Sources */,
 				80EB7AA32CAF0DCA005A3D79 /* ImageSaver.swift in Sources */,
 				80AA302D2CA4A5790098F68B /* PokemonStat.swift in Sources */,
 				80AF18E42CA1F2A600CFBC18 /* View+.swift in Sources */,
@@ -503,6 +521,7 @@
 				DEVELOPMENT_TEAM = LR4M2JVR47;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PokemonExplorer/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -513,6 +532,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -541,6 +561,7 @@
 				DEVELOPMENT_TEAM = LR4M2JVR47;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PokemonExplorer/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -551,6 +572,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";

@@ -16,9 +16,9 @@ public class FetchAllPokemonUseCase {
         self.pokemonRepository = pokemonRepository
     }
     
-    public func execute(itemCount: Int, completion: @escaping (Result<FetchAllPokemonResponse, Error>) -> Void) {
+    public func execute(itemCount: Int, page: Int = 1, completion: @escaping (Result<FetchAllPokemonResponse, Error>) -> Void) {
         do {
-            try pokemonRepository.fetchAllPokemon(itemCount: itemCount)
+            try pokemonRepository.fetchAllPokemon(itemCount: itemCount, page: page)
                 .sink { dataResponse in
                     if let error = dataResponse.error {
                         completion(.failure(error))
