@@ -22,6 +22,9 @@ struct PokemonListView: View {
         .onChange(of: viewModel.typeSelection) {
             viewModel.fetchPokemon()
         }
+        .onChange(of: networkMonitor.isNetworkAvailable) {
+            viewModel.fetchPokemon()
+        }
     }
     
     var mainView: some View {
@@ -81,20 +84,20 @@ struct PokemonListView: View {
             .padding(.bottom)
     }
     
-    @ViewBuilder
     var pokemonList: some View {
-            LazyVStack(alignment: .leading) {
-                ForEach(viewModel.pokemon, id:\.self) { pokemon in
-                    PokemonDetailsView(
-                        viewModel: viewModel.createPokemonDetailsViewModel(name: pokemon.name)
-                    )
-                    .onAppear {
-                        if pokemon == viewModel.pokemon[viewModel.pokemon.count - 5] {
-                            viewModel.fetchPokemon(paginated: true)
-                        }
-                    }
+        LazyVStack(alignment: .leading) {
+            ForEach(viewModel.pokemon, id:\.self) { pokemon in
+                pokemonListTile(pokemon: pokemon)
+            }
+        }
+    }
+    
+    func pokemonListTile(pokemon: PokemonResult) -> some View {
+        PokemonDetailsView(viewModel: viewModel.createPokemonDetailsViewModel(name: pokemon.name))
+            .onAppear {
+                if pokemon == viewModel.pokemon[viewModel.pokemon.count - 5] {
+                    viewModel.fetchPokemon(paginated: true)
                 }
-                loader
             }
     }
     
@@ -127,13 +130,8 @@ struct PokemonListView: View {
         }
     }
     
-    @ViewBuilder
     var loader: some View {
-        if viewModel.loading {
-            ProgressView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .padding()
-        }
+        Loader(showLoader: $viewModel.loading)
     }
     
     var noInternetError: some View {

@@ -5,6 +5,7 @@
 //  Created by Alexandros Alexandrov on 23/9/24.
 //
 
+import SwiftUI
 import Swinject
 import DomainLayer
 import DataLayer
@@ -29,6 +30,7 @@ class AppAssembler: ObservableObject {
         registerFetchPokemonByTypeUseCaseDependencies()
         
     }
+    //MARK: - Repositories
     
     private func registerUserDefaultsRepoDependencies() {
         mainAppContainer.register(UserDefaultsRepositoryProtocol.self) { _ in
@@ -41,6 +43,8 @@ class AppAssembler: ObservableObject {
             PokemonRepository()
         }
     }
+    
+    //MARK: - UseCases
     
     private func registerUserDefaultsUseCaseDepdencies() {
         mainAppContainer.register(UserDefaultsUseCase.self) { r in
@@ -68,6 +72,12 @@ class AppAssembler: ObservableObject {
             let pokemonRepo = r.resolve(PokemonRepositoryProtocol.self)!
             return FetchPokemonByTypeUseCase(pokemonRepository: pokemonRepo)
         }
+    }
+    
+    //MARK: - Main Screen
+    
+    public func getMainScreen() -> PokemonListView {
+        return PokemonListView()
     }
 
 }

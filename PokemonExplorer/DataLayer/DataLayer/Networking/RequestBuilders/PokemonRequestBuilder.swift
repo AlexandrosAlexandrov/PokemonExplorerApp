@@ -65,16 +65,10 @@ public enum PokemonRequestBuilder: URLRequestConvertible {
     private var parameters: Parameters? {
         switch self {
         case .fetchAllPokemon(let itemCount, let page):
-            if page > 1 {
-                return [
-                    "limit": itemCount,
-                    "offset": page * itemCount
-                ]
-            } else {
-                return [
-                    "limit": itemCount
-                ]
-            }
+            return [
+                "limit": itemCount,
+                "offset": page > 1 ? page * itemCount : nil
+            ].compactMapValues { $0 }
         default:
             return nil
         }

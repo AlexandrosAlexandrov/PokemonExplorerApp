@@ -17,7 +17,6 @@ class PokemonListViewModel: ObservableObject {
     
     @Published var favoriteToggle = false
     @Published var loading = false
-    @Published var page = 2
     @Published var lastYOffset: CGFloat?
     
     @Inject var fetchAllPokemonUseCase: FetchAllPokemonUseCase?
@@ -25,6 +24,7 @@ class PokemonListViewModel: ObservableObject {
     @Inject var userDefaultsUseCase: UserDefaultsUseCase?
     
     private let itemCount = 30
+    private var page = 2
     
     init() {
         fetchAllPokemon()
@@ -33,21 +33,24 @@ class PokemonListViewModel: ObservableObject {
     
     private func fetchAllPokemon(paginated: Bool = false) {
         loading = true
-        fetchAllPokemonUseCase?.execute(itemCount: itemCount, page: paginated ? page : 1, completion: { result in
-            switch result {
-            case .success(let pokemonResponse):
-                if paginated {
-                    self.pokemon += pokemonResponse.results ?? []
-                    self.page += 1
-                } else {
-                    self.pokemon = pokemonResponse.results ?? []
+        fetchAllPokemonUseCase?.execute(
+            itemCount: itemCount,
+            page: paginated ? page : 1,
+            completion: { result in
+                switch result {
+                case .success(let pokemonResponse):
+                    if paginated {
+                        self.pokemon += pokemonResponse.results ?? []
+                        self.page += 1
+                    } else {
+                        self.pokemon = pokemonResponse.results ?? []
+                    }
+                case .failure(let error):
+                    print("Failure :( ", error)
                 }
-            case .failure(let error):
-                print("Failure :( ", error)
-            }
-            
-            self.loading = false
-        })
+                
+                self.loading = false
+            })
     }
     
     private func fetchPokemonByType(type: PokemonType) {
