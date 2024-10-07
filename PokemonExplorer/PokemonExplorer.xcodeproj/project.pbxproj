@@ -29,6 +29,7 @@
 		80AF18C32CA1EEF500CFBC18 /* DomainLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80AF189B2CA1EBC100CFBC18 /* DomainLayer.framework */; };
 		80AF18C42CA1EEF500CFBC18 /* DomainLayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80AF189B2CA1EBC100CFBC18 /* DomainLayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80AF18E42CA1F2A600CFBC18 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AF18E32CA1F2A600CFBC18 /* View+.swift */; };
+		80B829A82CB49554002ED053 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B829A72CB49554002ED053 /* Loader.swift */; };
 		80DEC2212CB320800062B601 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEC2202CB320800062B601 /* Strings.swift */; };
 		80DEC2252CB321560062B601 /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEC2242CB321560062B601 /* CustomText.swift */; };
 		80EB7AA32CAF0DCA005A3D79 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EB7AA22CAF0DCA005A3D79 /* ImageSaver.swift */; };
@@ -87,6 +88,7 @@
 		80AF18BB2CA1EEA200CFBC18 /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		80AF18BD2CA1EED300CFBC18 /* AppAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembler.swift; sourceTree = "<group>"; };
 		80AF18E32CA1F2A600CFBC18 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		80B829A72CB49554002ED053 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		80DEC2202CB320800062B601 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		80DEC2242CB321560062B601 /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
 		80EB7AA22CAF0DCA005A3D79 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				80DEC2242CB321560062B601 /* CustomText.swift */,
+				80B829A72CB49554002ED053 /* Loader.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				80AF18BE2CA1EED300CFBC18 /* AppAssembler.swift in Sources */,
 				80AA301D2CA49A060098F68B /* PokemonListViewModel.swift in Sources */,
 				80AA30232CA4A1400098F68B /* PokemonDetailsView.swift in Sources */,
+				80B829A82CB49554002ED053 /* Loader.swift in Sources */,
 				80DEC2252CB321560062B601 /* CustomText.swift in Sources */,
 				804D9FB82CB45689007ECF2D /* Icons.swift in Sources */,
 				80DEC2212CB320800062B601 /* Strings.swift in Sources */,
@@ -530,8 +534,7 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
@@ -570,8 +573,7 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";

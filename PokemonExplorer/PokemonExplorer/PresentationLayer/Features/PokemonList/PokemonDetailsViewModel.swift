@@ -36,8 +36,11 @@ class PokemonDetailsViewModel: ObservableObject {
             switch result {
             case .success(let pokemonResponse):
                 self.pokemonDetails = pokemonResponse
-                ImageSaver.downloadAndSaveImage(for: self.name, from: pokemonResponse.sprites?.defaultSprite ?? "") { _ in
-                    
+                ImageSaver.downloadAndSaveImage(
+                    for: self.name,
+                    from: pokemonResponse.sprites?.defaultSprite ?? ""
+                ) { _ in
+                    print("Saved pokemon image!")
                 }
             case .failure(let error):
                 print("Failure :( ", error)
@@ -51,11 +54,7 @@ class PokemonDetailsViewModel: ObservableObject {
         self.isFavorite = false
         let favPokemon = userDefaultsUseCase?.getFavoritePokemon()
         
-        for pokemon in favPokemon ?? [] {
-            if pokemon.name == name {
-                self.isFavorite = true
-            }
-        }
+        self.isFavorite = favPokemon?.contains { $0.name == name } ?? false
     }
     
     public func getPokemonStat(_ pokemonStat: PokemonStat) -> Int {
@@ -63,28 +62,20 @@ class PokemonDetailsViewModel: ObservableObject {
             return getFavoritePokemonStat(pokemonStat)
         }
         
-        for stat in pokemonDetails?.stats ?? [] {
-            if stat.statDetails?.name == pokemonStat.rawValue {
-                return stat.base ?? 0
-            }
-        }
-        
-        return 0
+        return pokemonDetails?.stats?.first { $0.statDetails?.name == pokemonStat.rawValue }?.base ?? 0
     }
     
     public func getFavoritePokemonStat(_ pokemonStat: PokemonStat) -> Int {
         let favPokemon = userDefaultsUseCase?.getFavoritePokemon()
         
-        for pokemon in favPokemon ?? [] {
-            if pokemon.name == name {
-                switch pokemonStat {
-                case .hp:
-                    return pokemon.hp
-                case .attack:
-                    return pokemon.attack
-                case .defense:
-                    return pokemon.defense
-                }
+        if let pokemon = favPokemon?.first(where: { $0.name == name }) {
+            switch pokemonStat {
+            case .hp:
+                return pokemon.hp
+            case .attack:
+                return pokemon.attack
+            case .defense:
+                return pokemon.defense
             }
         }
         
@@ -102,28 +93,26 @@ class PokemonDetailsViewModel: ObservableObject {
         delegate?.toggledFavorite()
     }
     
+    
     public func savePokemonToFavorites() {
-        let favPokemon = FavoritePokemon(
-            name: name,
-            hp: getPokemonStat(.hp),
-            attack: getPokemonStat(.attack),
-            defense: getPokemonStat(.defense)
-        )
-        
+        let favPokemon = createFavoritePokemon()
         userDefaultsUseCase?.saveFavouritePokemon(pokemon: favPokemon)
         self.isFavorite = true
     }
     
     public func deletePokemonFromFavorites() {
-        let favPokemon = FavoritePokemon(
+        let favPokemon = createFavoritePokemon()
+        userDefaultsUseCase?.deleteFavoritePokemon(pokemon: favPokemon)
+        self.isFavorite = false
+    }
+    
+    private func createFavoritePokemon() -> FavoritePokemon {
+        FavoritePokemon(
             name: name,
             hp: getPokemonStat(.hp),
             attack: getPokemonStat(.attack),
             defense: getPokemonStat(.defense)
         )
-        
-        userDefaultsUseCase?.deleteFavoritePokemon(pokemon: favPokemon)
-        self.isFavorite = false
     }
     
 }

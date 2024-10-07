@@ -98,10 +98,7 @@ struct PokemonDetailsView: View {
         }
     }
     
-    @ViewBuilder
     var loader: some View {
-        if viewModel.loading {
-            ProgressView()
-        }
+        Loader(showLoader: $viewModel.loading)
     }
 }
