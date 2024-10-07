@@ -13,7 +13,7 @@ struct PokemonExplorerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            PokemonListView()
+            appAssembler.getMainScreen()
         }
     }
 }

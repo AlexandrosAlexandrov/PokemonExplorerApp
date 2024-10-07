@@ -74,8 +74,10 @@ struct PokemonDetailsView: View {
     var favoriteButton: some View {
         Image(systemName: viewModel.isFavorite ? Icons.liked.rawValue : Icons.unliked.rawValue)
             .resizable()
+            .foregroundColor(.heartRed)
             .frame(width: 30, height: 30)
-            .padding(.top, 5)
+            .padding(.top, 10)
+            .padding(.leading, 5)
             .onTapGesture {
                 viewModel.toggleFavorite()
             }
