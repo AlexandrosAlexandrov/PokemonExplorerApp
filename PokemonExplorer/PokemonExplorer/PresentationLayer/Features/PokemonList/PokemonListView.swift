@@ -61,7 +61,7 @@ struct PokemonListView: View {
                 Button(action: {
                     viewModel.typeSelection = type
                 }) {
-                    Text("\(type.rawValue.capitalizingFirstLetter())")
+                    CustomText("\(type.rawValue.capitalizingFirstLetter())")
                 }
             }
         } label: {

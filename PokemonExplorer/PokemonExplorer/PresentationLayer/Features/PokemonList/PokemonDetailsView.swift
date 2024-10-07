@@ -14,11 +14,7 @@ struct PokemonDetailsView: View {
     
     var body: some View {
         ZStack {
-            VStack(alignment: .leading) {
-                pokeName
-                pokeStats
-            }
-            
+            pokeDetails
             loader
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -33,34 +29,56 @@ struct PokemonDetailsView: View {
         
     }
     
+    var pokeDetails: some View {
+        VStack(alignment: .leading) {
+            pokeHeader
+            pokeStats
+        }
+        
+    }
+    
     @ViewBuilder
     var sprite: some View {
         if viewModel.isFavorite {
-            Image(uiImage: ImageSaver.getSavedImage(for: viewModel.name)!)
+            savedImage
         } else {
-            KFImage(URL(string: viewModel.pokemonDetails?.sprites?.defaultSprite ?? ""))
-                .placeholder({ _ in
-                    loader
-                })
+            imageFromUrl
         }
     }
     
-    var pokeName: some View {
+    var savedImage: some View {
+        Image(uiImage: ImageSaver.getSavedImage(for: viewModel.name)!)
+    }
+    
+    var imageFromUrl: some View {
+        KFImage(URL(string: viewModel.pokemonDetails?.sprites?.defaultSprite ?? ""))
+            .placeholder({ _ in
+                loader
+            })
+    }
+    
+    var pokeHeader: some View {
         HStack {
-            Text(viewModel.name.capitalizingFirstLetter())
-                .font(.title3)
-            
+            pokeName
             Spacer()
-            
-            Image(systemName: viewModel.isFavorite ? Icons.liked.rawValue : Icons.unliked.rawValue)
-                .resizable()
-                .frame(width: 30, height: 30)
-                .padding(.top, 5)
-                .onTapGesture {
-                    viewModel.toggleFavorite()
-                }
+            favoriteButton
         }
         .padding(.horizontal, 8)
+    }
+    
+    var pokeName: some View {
+        Text(viewModel.name.capitalizingFirstLetter())
+            .font(.title3)
+    }
+    
+    var favoriteButton: some View {
+        Image(systemName: viewModel.isFavorite ? Icons.liked.rawValue : Icons.unliked.rawValue)
+            .resizable()
+            .frame(width: 30, height: 30)
+            .padding(.top, 5)
+            .onTapGesture {
+                viewModel.toggleFavorite()
+            }
     }
     
     var pokeStats: some View {
