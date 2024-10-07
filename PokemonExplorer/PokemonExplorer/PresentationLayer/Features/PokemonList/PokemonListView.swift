@@ -20,16 +20,7 @@ struct PokemonListView: View {
         .padding(.horizontal, 18)
         .background(.bgGreen)
         .onChange(of: viewModel.typeSelection) {
-            if networkMonitor.isNetworkAvailable {
-                viewModel.fetchPokemon()
-            } else {
-                viewModel.pokemon = []
-            }
-        }
-        .onChange(of: networkMonitor.isNetworkAvailable) { oldValue, newValue in
-            if newValue == true {
-                viewModel.fetchPokemon()
-            }
+            viewModel.fetchPokemon()
         }
     }
     
