@@ -1,4 +1,4 @@
-This app is built in Swift, using the Swiftui framework in Xcode.
+This app is built in Swift, using the SwiftUI framework in Xcode.
 
 It uses the open RESTful Pokémon API (https://pokeapi.co/) to fetch data and display details of pokemon.
 
